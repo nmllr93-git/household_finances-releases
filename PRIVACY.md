@@ -1,8 +1,8 @@
-# Privacy Policy: Household Finances
+# Privacy Policy: Larenest
 
-**Effective date:** November 21, 2026
+**Effective date:** November 22, 2026
 
-Household Finances is a budgeting and net-worth app that you run yourself: on your own computer, on your own home server, or entirely on your phone. This policy explains what happens to your information when you use the desktop app, the Android and iOS apps, or the self-hosted server.
+Larenest is a budgeting and net-worth app that you run yourself: on your own computer, on your own home server, or entirely on your phone. This policy explains what happens to your information when you use the desktop app, the Android and iOS apps, or the self-hosted server.
 
 ## The short version
 
@@ -38,10 +38,17 @@ These features are optional, and most need you to add your own free API key. Whe
 | U.S. Energy Information Administration | Your API key | Gasoline and electricity prices |
 | NHTSA (U.S. Department of Transportation) | A vehicle VIN you enter, or its make, model and year | Vehicle details and recall notices |
 | Nager.Date | The current year | Bank-holiday dates |
+| U.S. Treasury (fiscaldata.treasury.gov) | Nothing personal | Treasury bill, note and I-bond rates |
+| Frankfurter (frankfurter.dev) | Nothing personal | Currency exchange rates |
+| SimpleFIN Bridge (simplefin.org) | Your SimpleFIN access link | Automatic bank sync, only if you connect it. You sign up with SimpleFIN yourself and link your banks on their site; this app only receives your balances and posted transactions, read-only, and never sees your bank passwords |
 
 Each service has its own privacy policy. Like any internet request, these services can see the network address the request comes from. No account, transaction, balance or personal financial information is ever included.
 
 The desktop and phone apps check the public releases page on GitHub for new versions. That check tells GitHub which file is being downloaded, as any download does, and nothing else.
+
+## Email digest and invites
+
+If the person who runs a Larenest server sets up the optional weekly email digest, the server sends a summary of that dashboard to the addresses they enter, through the email account they configure. Invite links are created on that server and only work on it. Neither involves the developer.
 
 ## Notifications
 
@@ -70,4 +77,4 @@ If this policy changes, the updated version is posted here with a new effective 
 
 ## Contact
 
-Questions about this policy: open an issue at https://github.com/nmllr93-git/household_finances-releases/issues
+Questions about this policy: email contact@larenest.app, or open an issue at https://github.com/nmllr93-git/household_finances-releases/issues

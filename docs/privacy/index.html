@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · Larenest</title><link rel="icon" href="/icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF7F1;color:#2A1E17;font:16px/1.65 Inter,system-ui,sans-serif}
+main{max-width:780px;margin:0 auto;padding:32px 22px 64px}
+h1,h2{font-family:Fraunces,Georgia,serif;line-height:1.2} h1{font-size:38px;margin:.2em 0 .4em} h2{font-size:24px;margin-top:1.8em}
+a{color:#9C4A2F} table{border-collapse:collapse;width:100%;font-size:14px;display:block;overflow-x:auto} th,td{border-bottom:1px solid #E6DCD2;padding:8px 10px;text-align:left;vertical-align:top} th{background:#F2E9DF}
+code{background:#F2E9DF;padding:1px 5px;border-radius:4px} .top{display:flex;align-items:center;gap:10px;text-decoration:none;color:#2A1E17;font-family:Fraunces,serif;font-weight:700;font-size:20px}
+</style></head><body><main>
+<a class="top" href="/"><img src="/icon-192.png" width="32" height="32" alt="" style="border-radius:8px">Larenest</a>
+<h1>Privacy Policy: Larenest</h1>
+<p><strong>Effective date:</strong> November 22, 2026</p>
+<p>Larenest is a budgeting and net-worth app that you run yourself: on your own computer, on your own home server, or entirely on your phone. This policy explains what happens to your information when you use the desktop app, the Android and iOS apps, or the self-hosted server.</p>
+<h2>The short version</h2>
+<ul>
+<li><strong>We don't collect your data.</strong> The developer never receives, stores or sees your transactions, balances, budgets, accounts or anything else you enter.</li>
+<li><strong>Your data stays where you put it:</strong> on your phone (phone-only mode), on your computer, or on a server you run.</li>
+<li><strong>No ads, no analytics, no tracking,</strong> and no developer account to sign up for.</li>
+<li>The only things that leave your device are <strong>optional</strong> requests you turn on to public data services: stock prices and market data, interest rates and inflation, and vehicle look-ups. Those requests contain stock symbols or a VIN, never your financial information.</li>
+</ul>
+<h2>What the app stores, and where</h2>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Where your data is kept</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phone-only mode</strong> (Android/iOS)</td>
+<td>In the app's private storage on your phone. Other apps can't read it. Uninstalling the app or clearing its data deletes it, so make a backup first.</td>
+</tr>
+<tr>
+<td><strong>Desktop app</strong> (this computer)</td>
+<td>In a data folder on your computer, by default <code>%APPDATA%\HouseholdFinances</code> on Windows.</td>
+</tr>
+<tr>
+<td><strong>Self-hosted server</strong></td>
+<td>In the data folder on the computer that runs the server.</td>
+</tr>
+<tr>
+<td><strong>Connecting to a server</strong> (desktop or phone app)</td>
+<td>On that server. The app on your device only displays it.</td>
+</tr>
+</tbody>
+</table>
+<p>What's stored: the statements you import (dates, descriptions and amounts of transactions), account names and balances, budgets, rules, goals, investment holdings, the assets you enter, your settings and, if you add them, API keys for the optional data services. Statement files you import (CSV, PDF, OFX/QFX) are read <strong>on your device</strong>. They're never uploaded to the developer or to anyone else.</p>
+<p>Logins for a server you run are stored on that server, with passwords protected by a one-way hash (scrypt). The developer has no access to them.</p>
+<h2>Information sent to third parties (only if you turn it on)</h2>
+<p>These features are optional, and most need you to add your own free API key. When they're used, your device or your server contacts the service directly. The developer is not involved and receives nothing.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>What is sent</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Finnhub (finnhub.io)</td>
+<td>Stock and fund symbols, your API key</td>
+<td>Prices, company sector, news, analyst ratings, earnings dates</td>
+</tr>
+<tr>
+<td>Financial Modeling Prep</td>
+<td>Stock and fund symbols, your API key</td>
+<td>Prices, market overview, dividends, price targets, fund holdings</td>
+</tr>
+<tr>
+<td>Stooq</td>
+<td>Stock symbols</td>
+<td>Delayed prices when no key is set</td>
+</tr>
+<tr>
+<td>FRED (Federal Reserve Bank of St. Louis)</td>
+<td>Your API key</td>
+<td>Interest rates, inflation and home-price data</td>
+</tr>
+<tr>
+<td>U.S. Bureau of Labor Statistics</td>
+<td>Your API key</td>
+<td>Inflation by category</td>
+</tr>
+<tr>
+<td>U.S. Energy Information Administration</td>
+<td>Your API key</td>
+<td>Gasoline and electricity prices</td>
+</tr>
+<tr>
+<td>NHTSA (U.S. Department of Transportation)</td>
+<td>A vehicle VIN you enter, or its make, model and year</td>
+<td>Vehicle details and recall notices</td>
+</tr>
+<tr>
+<td>Nager.Date</td>
+<td>The current year</td>
+<td>Bank-holiday dates</td>
+</tr>
+<tr>
+<td>U.S. Treasury (fiscaldata.treasury.gov)</td>
+<td>Nothing personal</td>
+<td>Treasury bill, note and I-bond rates</td>
+</tr>
+<tr>
+<td>Frankfurter (frankfurter.dev)</td>
+<td>Nothing personal</td>
+<td>Currency exchange rates</td>
+</tr>
+<tr>
+<td>SimpleFIN Bridge (simplefin.org)</td>
+<td>Your SimpleFIN access link</td>
+<td>Automatic bank sync, only if you connect it. You sign up with SimpleFIN yourself and link your banks on their site; this app only receives your balances and posted transactions, read-only, and never sees your bank passwords</td>
+</tr>
+</tbody>
+</table>
+<p>Each service has its own privacy policy. Like any internet request, these services can see the network address the request comes from. No account, transaction, balance or personal financial information is ever included.</p>
+<p>The desktop and phone apps check the public releases page on GitHub for new versions. That check tells GitHub which file is being downloaded, as any download does, and nothing else.</p>
+<h2>Email digest and invites</h2>
+<p>If the person who runs a Larenest server sets up the optional weekly email digest, the server sends a summary of that dashboard to the addresses they enter, through the email account they configure. Invite links are created on that server and only work on it. Neither involves the developer.</p>
+<h2>Notifications</h2>
+<p>Bill reminders are scheduled <strong>on your phone</strong> from the recurring bills the app finds in your own data. They're local notifications: nothing is sent to a notification server, and you can turn them off in the app or in your phone's settings.</p>
+<h2>Backups and sharing</h2>
+<ul>
+<li><strong>Backup files</strong> are created on your device. When you save or send one (for example to Google Drive, iCloud, Files or email), it goes where you choose, under that service's own privacy terms. Backups contain your financial data, so keep them somewhere private.</li>
+<li><strong>Sharing between dashboards</strong> (on a server you run) shares only the account names, types, owners and balances you choose, with the other dashboards on that same server. Transactions are never shared.</li>
+</ul>
+<h2>Children</h2>
+<p>The app isn't directed at children under 13 and doesn't knowingly collect information from anyone, since it doesn't collect information at all.</p>
+<h2>Your choices and control</h2>
+<p>You control all of your data. You can export it (Settings → Backup &amp; restore), delete individual items in the app, delete a dashboard's data by restoring an empty backup, or remove everything by deleting the data folder or uninstalling the app (phone-only mode). Because the developer holds none of your data, there's nothing for us to delete or hand over on request.</p>
+<h2>Security</h2>
+<p>Data on your phone uses the app's private storage, protected by your phone's own security and encryption. On a computer or server, protect the data folder as you would any sensitive file. We recommend reaching a home server only through your home network or a private VPN such as Tailscale or WireGuard, never by opening it to the internet.</p>
+<h2>Changes to this policy</h2>
+<p>If this policy changes, the updated version is posted here with a new effective date. Material changes will also be noted in the release notes.</p>
+<h2>Contact</h2>
+<p>Questions about this policy: email contact@larenest.app, or open an issue at https://github.com/nmllr93-git/household_finances-releases/issues</p>
+</main></body></html>

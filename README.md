@@ -1,4 +1,4 @@
-# Household Finances
+# Larenest
 
 **Your whole financial picture — budgets, bills, net worth, investments and planning — on your own devices.**
 No account with us, no ads, no selling your data. Your numbers stay on your phone, your computer or your own home server.
@@ -7,9 +7,9 @@ No account with us, no ads, no selling your data. Your numbers stay on your phon
 
 ---
 
-## Why Household Finances?
+## Why Larenest?
 
-Most budgeting apps want your bank password and keep a copy of every transaction on their servers, then charge around $100 a year for it. Household Finances flips that around:
+Most budgeting apps want your bank password and keep a copy of every transaction on their servers, then charge around $100 a year for it. Larenest flips that around:
 
 - **Private by design.** Your data lives in a single file on a device you own. Nothing is uploaded to us — there is no "us" server to upload to.
 - **Built for households.** Separate personal dashboards for each person, plus a shared household dashboard with "who paid what" splits. Share an account's balance into the shared view without sharing its transactions.
