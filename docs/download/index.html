@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Download Larenest</title>
+<meta name="description" content="Download Larenest for Windows, Mac or Android. Free.">
+<link rel="icon" href="/icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #FBF7F1; color: #2A1E17; font: 16px/1.6 Inter, system-ui, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 22px 64px; }
+  a { color: #9C4A2F; }
+  .top { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #2A1E17; font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 20px; }
+  h1 { font-family: Fraunces, Georgia, serif; font-size: 40px; line-height: 1.15; margin: 28px 0 8px; }
+  .lead { font-size: 18px; color: #5A4E45; margin: 0 0 24px; }
+  .main { background: #fff; border: 1px solid #E6DCD2; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .main h2 { margin: 0; font-size: 22px; }
+  .btn { display: inline-block; background: #9C4A2F; color: #fff; text-decoration: none; font-weight: 600; font-size: 17px; padding: 14px 22px; border-radius: 12px; align-self: flex-start; }
+  .btn:hover { background: #7E3A24; color: #fff; }
+  .btn.alt { background: #fff; color: #2A1E17; border: 1px solid #D9CDC1; }
+  .note { font-size: 14px; color: #5A4E45; margin: 0; }
+  .others { margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+  .others a { display: block; background: #fff; border: 1px solid #E6DCD2; border-radius: 14px; padding: 14px 16px; text-decoration: none; color: #2A1E17; }
+  .others b { display: block; } .others span { font-size: 13px; color: #5A4E45; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; }
+  details { margin-top: 24px; background: #fff; border: 1px solid #E6DCD2; border-radius: 14px; padding: 12px 16px; }
+  summary { cursor: pointer; font-weight: 600; }
+</style>
+</head>
+<body>
+<main>
+  <a class="top" href="/"><img src="/icon-192.png" width="32" height="32" alt="" style="border-radius:8px">Larenest</a>
+  <h1>Download Larenest</h1>
+  <p class="lead">Free. No account needed. Your data stays on your own devices.</p>
+
+  <section class="main" id="main" aria-live="polite">
+    <h2 id="title">Finding the right download…</h2>
+    <p class="note" id="desc"></p>
+    <div class="row" id="btns"></div>
+    <p class="note" id="steps"></p>
+  </section>
+
+  <div class="others" id="others"></div>
+
+  <details>
+    <summary>Which one do I need?</summary>
+    <p><b>Windows or Mac:</b> the desktop app. Use it on its own, or let it host Larenest for your phone and the rest of your household.</p>
+    <p><b>Android:</b> keep everything on your phone, or connect to a computer running Larenest. Coming to Google Play soon.</p>
+    <p><b>iPhone and iPad:</b> the App Store version is on its way. Until then, open your home computer's Larenest address in Safari (the desktop app shows it as a QR code) and add it to your Home Screen.</p>
+    <p>All versions and release notes are on the <a href="https://github.com/nmllr93-git/household_finances-releases/releases">releases page</a>.</p>
+  </details>
+</main>
+<script src="download.js"></script>
+</body>
+</html>
