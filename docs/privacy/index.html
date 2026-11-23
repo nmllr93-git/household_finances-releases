@@ -11,7 +11,7 @@ code{background:#F2E9DF;padding:1px 5px;border-radius:4px} .top{display:flex;ali
 </style></head><body><main>
 <a class="top" href="/"><img src="/icon-192.png" width="32" height="32" alt="" style="border-radius:8px">Larenest</a>
 <h1>Privacy Policy: Larenest</h1>
-<p><strong>Effective date:</strong> November 22, 2026</p>
+<p><strong>Effective date:</strong> November 23, 2026</p>
 <p>Larenest is a budgeting and net-worth app that you run yourself: on your own computer, on your own home server, or entirely on your phone. This policy explains what happens to your information when you use the desktop app, the Android and iOS apps, or the self-hosted server.</p>
 <h2>The short version</h2>
 <ul>
@@ -76,6 +76,11 @@ code{background:#F2E9DF;padding:1px 5px;border-radius:4px} .top{display:flex;ali
 <td>Delayed prices when no key is set</td>
 </tr>
 <tr>
+<td>Yahoo Finance (query1.finance.yahoo.com)</td>
+<td>Stock symbols</td>
+<td>Daily price history for the investment chart, when the other sources have none</td>
+</tr>
+<tr>
 <td>FRED (Federal Reserve Bank of St. Louis)</td>
 <td>Your API key</td>
 <td>Interest rates, inflation and home-price data</td>
@@ -127,7 +132,9 @@ code{background:#F2E9DF;padding:1px 5px;border-radius:4px} .top{display:flex;ali
 <h2>Email digest and invites</h2>
 <p>If the person who runs a Larenest server sets up the optional weekly email digest, the server sends a summary of that dashboard to the addresses they enter, through the email account they configure. Invite links are created on that server and only work on it. Neither involves the developer.</p>
 <h2>Notifications</h2>
-<p>Bill reminders are scheduled <strong>on your phone</strong> from the recurring bills the app finds in your own data. They're local notifications: nothing is sent to a notification server, and you can turn them off in the app or in your phone's settings.</p>
+<p>Bill reminders and alerts (a bill due tomorrow, a budget passing 90%) are worked out <strong>on your phone</strong> from your own data. They're local notifications: nothing is sent to a notification server, and you can turn them off in the app or in your phone's settings.</p>
+<h2>Feedback</h2>
+<p>“Send feedback” opens your own email app with a message to contact@larenest.app, with the app type and device details filled in. Nothing is sent unless you press Send, and the developer receives only that email.</p>
 <h2>Backups and sharing</h2>
 <ul>
 <li><strong>Backup files</strong> are created on your device. When you save or send one (for example to Google Drive, iCloud, Files or email), it goes where you choose, under that service's own privacy terms. Backups contain your financial data, so keep them somewhere private.</li>
@@ -139,6 +146,7 @@ code{background:#F2E9DF;padding:1px 5px;border-radius:4px} .top{display:flex;ali
 <p>You control all of your data. You can export it (Settings → Backup &amp; restore), delete individual items in the app, delete a dashboard's data by restoring an empty backup, or remove everything by deleting the data folder or uninstalling the app (phone-only mode). Because the developer holds none of your data, there's nothing for us to delete or hand over on request.</p>
 <h2>Security</h2>
 <p>Data on your phone uses the app's private storage, protected by your phone's own security and encryption. On a computer or server, protect the data folder as you would any sensitive file. We recommend reaching a home server only through your home network or a private VPN such as Tailscale or WireGuard, never by opening it to the internet.</p>
+<p><strong>Connections between your devices are encrypted.</strong> The computer running Larenest makes its own HTTPS certificate. The Larenest phone and desktop apps trust that one certificate, which they learn from the QR code you scan (or the first time they connect), so traffic between them and your computer is encrypted even on ordinary home Wi-Fi. If that certificate ever changes, the app warns you before connecting. A web browser can use the same https:// address, with a one-time warning because the certificate is your computer's own; if you use Tailscale with its free HTTPS certificates turned on, the Tailscale address has no warning. Plain http:// addresses still work for compatibility but are not encrypted between devices. All connections to the outside services listed above use HTTPS.</p>
 <h2>Changes to this policy</h2>
 <p>If this policy changes, the updated version is posted here with a new effective date. Material changes will also be noted in the release notes.</p>
 <h2>Contact</h2>
