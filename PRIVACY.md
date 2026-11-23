@@ -41,6 +41,7 @@ These features are optional, and most need you to add your own free API key. Whe
 | U.S. Treasury (fiscaldata.treasury.gov) | Nothing personal | Treasury bill, note and I-bond rates |
 | Frankfurter (frankfurter.dev) | Nothing personal | Currency exchange rates |
 | SimpleFIN Bridge (simplefin.org) | Your SimpleFIN access link | Automatic bank sync, only if you connect it. You sign up with SimpleFIN yourself and link your banks on their site; this app only receives your balances and posted transactions, read-only, and never sees your bank passwords |
+| Teller (teller.io) or Plaid (plaid.com) | Your own developer keys, and the connection for each bank you link | Automatic bank sync with your own developer account, only if the person running the server adds those keys and you connect a bank. You sign in to your bank in Teller’s or Plaid’s own window; this app only receives balances and transactions, read-only, and never your bank password |
 
 Each service has its own privacy policy. Like any internet request, these services can see the network address the request comes from. No account, transaction, balance or personal financial information is ever included.
 
