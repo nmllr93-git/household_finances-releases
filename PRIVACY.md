@@ -57,7 +57,7 @@ Bill reminders are scheduled **on your phone** from the recurring bills the app 
 ## Backups and sharing
 
 - **Backup files** are created on your device. When you save or send one (for example to Google Drive, iCloud, Files or email), it goes where you choose, under that service's own privacy terms. Backups contain your financial data, so keep them somewhere private.
-- **Sharing between dashboards** (on a server you run) shares only the account names, types, owners and balances you choose, with the other dashboards on that same server. Transactions are never shared.
+- **Sharing between dashboards** (on a server you run, or between dashboards on the same phone) shares only the account names, types, owners and balances you choose, with the other dashboards on that same server or phone. Transactions are never shared.
 
 ## Children
 
