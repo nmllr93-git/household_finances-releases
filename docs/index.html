@@ -30,7 +30,7 @@ a{color:#9C4A2F}a:hover{color:#2A1E17}
   .cmp tbody td:first-of-type::before { color: #9C4A2F; }
 }
 </style>
-<style>@media (min-width: 1000px) { .cmp td.cmp-nw { white-space: nowrap; } }</style>
+<style>@media (min-width: 1000px) { .cmp td.cmp-nw { white-space: nowrap; } } @media (min-width: 760px) { ul.feat-wide { display: block !important; columns: 2; column-gap: 48px; } ul.feat-wide li { margin-bottom: 8px; break-inside: avoid; } }</style>
 </head>
 <body>
 <div style="font-family: Inter, system-ui, sans-serif; color: #2A1E17; background: #FBF7F1; min-height: 100vh">
@@ -187,9 +187,19 @@ a{color:#9C4A2F}a:hover{color:#2A1E17}
 </ul>
 </div>
 <div style="background: #fff; border: 1px solid #DDE3DE; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<h3 style="margin: 0; font-family: 'Fraunces', sans-serif; font-size: 22px">Your data, your way</h3>
+<h3 style="margin: 0; font-family: 'Fraunces', sans-serif; font-size: 22px">Side business</h3>
 <ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 16px; line-height: 1.5; color: #2C3B36">
+<li>For freelancers and sole proprietors: mark business income and expenses, even part of a bill</li>
+<li>Totals by IRS Schedule C line, profit and loss, CSV and PDF for tax time</li>
+<li>Quarterly estimated tax reminders and a mileage log</li>
+<li>Hidden until you add a business</li>
+</ul>
+</div>
+<div style="grid-column: 1 / -1; background: #fff; border: 1px solid #DDE3DE; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-family: 'Fraunces', sans-serif; font-size: 22px">Your data, your way</h3>
+<ul class="feat-wide" style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 16px; line-height: 1.5; color: #2C3B36">
 <li>Automatic daily backups, a backup health check and one-click restore</li>
+<li>Optional password encryption for the data folder</li>
 <li>Export everything, any time</li>
 <li>Arrange every tab: move, resize, add or remove sections and tiles</li>
 <li>Build your own reports: any total, grouped and filtered your way</li>
@@ -232,6 +242,7 @@ a{color:#9C4A2F}a:hover{color:#2A1E17}
 <tr style="border-top: 1px solid #E3E8E4"><th scope="row" style="padding: 14px 18px; text-align: left; font-weight: 500">Markets, screener, economy panel</th><td data-app="Larenest" style="padding: 14px 18px; font-weight: 600">Yes</td><td data-app="Monarch" style="padding: 14px 18px">No</td><td data-app="YNAB" style="padding: 14px 18px">No</td><td data-app="Copilot" style="padding: 14px 18px">No</td><td data-app="Rocket Money" style="padding: 14px 18px">No</td><td data-app="Actual" style="padding: 14px 18px">No</td></tr>
 <tr style="border-top: 1px solid #E3E8E4"><th scope="row" style="padding: 14px 18px; text-align: left; font-weight: 500">Debt payoff, forecast, retirement</th><td data-app="Larenest" style="padding: 14px 18px; font-weight: 600">Yes</td><td data-app="Monarch" style="padding: 14px 18px">Partly</td><td data-app="YNAB" style="padding: 14px 18px">No</td><td data-app="Copilot" style="padding: 14px 18px">Partly</td><td data-app="Rocket Money" style="padding: 14px 18px">No</td><td data-app="Actual" style="padding: 14px 18px">No</td></tr>
 <tr style="border-top: 1px solid #E3E8E4"><th scope="row" style="padding: 14px 18px; text-align: left; font-weight: 500">Personal + shared household views</th><td data-app="Larenest" style="padding: 14px 18px; font-weight: 600">Yes</td><td data-app="Monarch" style="padding: 14px 18px">Yes</td><td data-app="YNAB" style="padding: 14px 18px">Yes</td><td data-app="Copilot" style="padding: 14px 18px">No</td><td data-app="Rocket Money" style="padding: 14px 18px">No</td><td data-app="Actual" style="padding: 14px 18px">Partly</td></tr>
+<tr style="border-top: 1px solid #E3E8E4"><th scope="row" style="padding: 14px 18px; text-align: left; font-weight: 500">Self-employed tools (Schedule C, mileage, quarterly tax)</th><td data-app="Larenest" style="padding: 14px 18px; font-weight: 600">Yes, included</td><td data-app="Monarch" style="padding: 14px 18px">Schedule C report on its higher Plus plan</td><td data-app="YNAB" style="padding: 14px 18px">Tags or a separate budget</td><td data-app="Copilot" style="padding: 14px 18px">Tags</td><td data-app="Rocket Money" style="padding: 14px 18px">A tax-deductible tag</td><td data-app="Actual" style="padding: 14px 18px">Not built in</td></tr>
 <tr style="border-top: 1px solid #E3E8E4"><th scope="row" style="padding: 14px 18px; text-align: left; font-weight: 500">Windows, Mac and Android apps</th><td class="cmp-nw" data-app="Larenest" style="padding: 14px 18px; font-weight: 600">Yes</td><td class="cmp-nw" data-app="Monarch" style="padding: 14px 18px">Web + mobile</td><td class="cmp-nw" data-app="YNAB" style="padding: 14px 18px">Web + mobile</td><td class="cmp-nw" data-app="Copilot" style="padding: 14px 18px">Apple only</td><td class="cmp-nw" data-app="Rocket Money" style="padding: 14px 18px">Web + mobile</td><td class="cmp-nw" data-app="Actual" style="padding: 14px 18px">Web</td></tr>
 </tbody>
 </table>
