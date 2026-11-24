@@ -10,7 +10,7 @@
   const card = (href, name, sub) => { const a = document.createElement('a'); a.href = href; const b = document.createElement('b'); b.textContent = name; const s = document.createElement('span'); s.textContent = sub; a.append(b, s); return a; };
 
   const show = (files) => {
-    const W = files.win, MA = files.macArm, MI = files.macIntel, A = files.apk;
+    const W = files.win, MA = files.macArm, MI = files.macIntel, A = files.apk, LA = files.linuxAppImage, LD = files.linuxDeb;
     const set = (title, desc, buttons, steps) => { $('title').textContent = title; $('desc').textContent = desc; $('btns').replaceChildren(...buttons); $('steps').textContent = steps || ''; };
     if (os === 'windows') set('Larenest for Windows', `Version ${files.desktopVer || ''} · Windows 10 or 11`, [btn(W || PAGE, 'Download for Windows')],
       'Open the downloaded file to install. If Windows SmartScreen warns about an unknown app, choose “More info”, then “Run anyway”. Later updates install from inside the app.');
@@ -20,6 +20,8 @@
         'Not sure which Mac you have? Apple menu → About This Mac: “Chip” means Apple Silicon, “Processor” means Intel. Drag Larenest into Applications. The first time, open it from System Settings → Privacy & Security → Open Anyway.');
     } else if (os === 'android') set('Larenest for Android', `Version ${files.androidVer || ''} · Android 7 or newer`, [btn(A || PAGE, 'Download for Android')],
       'Open the downloaded file and allow your browser to install apps when asked. A Google Play version is coming soon.');
+    else if (os === 'linux') set('Larenest for Linux', `Version ${files.desktopVer || ''} · x86-64 and ARM64`, [btn(LA || PAGE, 'AppImage (any distribution)'), btn(LD || PAGE, '.deb (Debian, Ubuntu, Mint)', true), btn('/linux/', 'Server: Docker or installer', true)],
+      'AppImage: make it executable (chmod +x) and run it; it updates itself. For a home server, NAS or Raspberry Pi, use Docker or the one-line installer on the Linux page.');
     else if (os === 'ios') set('Larenest on iPhone and iPad', 'The App Store version is on its way.', [btn('/#run', 'How to use it today', true)],
       'Until then, open your home computer’s Larenest address in Safari (the desktop app shows a QR code you can scan), sign in, then Share → Add to Home Screen.');
     else set('Download Larenest', 'Pick your device below.', [btn(PAGE, 'All downloads', true)], os === 'linux' ? 'On Linux you can run the Larenest server with Node.js 22; see the instructions on the releases page.' : '');
@@ -27,6 +29,7 @@
     if (os !== 'windows') o.push(card(W || PAGE, 'Windows', 'Windows 10 or 11'));
     if (os !== 'mac') o.push(card(MA || PAGE, 'Mac (Apple Silicon)', 'M1 or newer, macOS 12+'), card(MI || PAGE, 'Mac (Intel)', 'macOS 12+'));
     if (os !== 'android') o.push(card(A || PAGE, 'Android', 'Android 7 or newer'));
+    if (os !== 'linux') o.push(card(LA || PAGE, 'Linux desktop', 'AppImage or .deb'), card('/linux/', 'Linux server', 'Docker, Raspberry Pi, systemd'));
     o.push(card(PAGE, 'All versions', 'Release notes and older versions'));
     $('others').replaceChildren(...o);
   };
@@ -39,7 +42,7 @@
       const desk = live.find((r) => /^v\d/.test(r.tag_name) && r.assets.some((a) => /\.exe$/i.test(a.name)));
       const andr = live.find((r) => /^android-v/.test(r.tag_name) && r.assets.some((a) => /\.apk$/i.test(a.name)));
       const pick = (rel, re) => { const a = rel && rel.assets.find((x) => re.test(x.name)); return a ? a.browser_download_url : ''; };
-      show({ win: pick(desk, /Setup.*\.exe$/i), macArm: pick(desk, /mac-arm64\.dmg$/i), macIntel: pick(desk, /mac-x64\.dmg$/i), apk: pick(andr, /\.apk$/i),
+      show({ linuxAppImage: pick(desk, /linux-x86_64\.AppImage$/i), linuxDeb: pick(desk, /linux-amd64\.deb$/i), win: pick(desk, /Setup.*\.exe$/i), macArm: pick(desk, /mac-arm64\.dmg$/i), macIntel: pick(desk, /mac-x64\.dmg$/i), apk: pick(andr, /\.apk$/i),
         desktopVer: desk ? desk.tag_name.replace(/^v/, '') : '', androidVer: andr ? andr.tag_name.replace(/^android-v/, '') : '' });
     })
     .catch(() => {}); // the buttons already point at the releases page

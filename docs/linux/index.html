@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Larenest on Linux</title><link rel="icon" href="/icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF7F1;color:#2A1E17;font:16px/1.65 Inter,system-ui,sans-serif}
+main{max-width:780px;margin:0 auto;padding:32px 22px 64px}
+h1,h2{font-family:Fraunces,Georgia,serif;line-height:1.2} h1{font-size:38px;margin:.2em 0 .4em} h2{font-size:24px;margin-top:1.8em}
+a{color:#9C4A2F} table{border-collapse:collapse;width:100%;font-size:14px;display:block;overflow-x:auto} th,td{border-bottom:1px solid #E6DCD2;padding:8px 10px;text-align:left;vertical-align:top} th{background:#F2E9DF}
+code{background:#F2E9DF;padding:1px 5px;border-radius:4px} .top{display:flex;align-items:center;gap:10px;text-decoration:none;color:#2A1E17;font-family:Fraunces,serif;font-weight:700;font-size:20px}
+pre{background:#2A1E17;color:#F6EDE4;padding:14px 16px;border-radius:10px;overflow-x:auto;font-size:13.5px;line-height:1.5} pre code{background:none;padding:0;color:inherit} hr{border:0;border-top:1px solid #E6DCD2;margin:2em 0}
+</style></head><body><main>
+<a class="top" href="/"><img src="/icon-192.png" width="32" height="32" alt="" style="border-radius:8px">Larenest</a>
+<h1>Larenest on Linux</h1>
+<p>There are three ways to run Larenest on Linux. They all run the same server and use the same data format, and the Larenest apps connect to any of them.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Best for</th>
+<th>Updates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Docker</strong></td>
+<td>Home servers, NAS boxes (Unraid, TrueNAS, Synology), Proxmox, Raspberry Pi 4/5</td>
+<td>Pull the new image</td>
+</tr>
+<tr>
+<td><strong>Installer (systemd service)</strong></td>
+<td>A Linux server or always-on PC without Docker</td>
+<td>Run the installer again</td>
+</tr>
+<tr>
+<td><strong>Desktop app (AppImage or .deb)</strong></td>
+<td>A Linux desktop, with the same window, tray and QR codes as on Windows</td>
+<td>The AppImage updates itself; for the .deb, download the new one</td>
+</tr>
+</tbody>
+</table>
+<p>Requirements:</p>
+<ul>
+<li><strong>Processor:</strong> x86-64 or ARM64. The installer also handles 32-bit ARM (armv7) when it downloads Node itself.</li>
+<li><strong>Disk space:</strong> about 150 MB, plus your data.</li>
+<li><strong>Port:</strong> one network port, 8080 by default.</li>
+</ul>
+<hr />
+<h2>Docker</h2>
+<pre><code class="language-yaml"># docker-compose.yml
+services:
+  larenest:
+    image: ghcr.io/nmllr93-git/larenest:latest
+    container_name: larenest
+    restart: unless-stopped
+    network_mode: host            # lets QR codes show your server's real address
+    environment:
+      TZ: America/Chicago
+      LARENEST_ADMIN_USER: alex           # first login (only used when there are none)
+      LARENEST_ADMIN_PASSWORD: change-me  # remove after you've signed in
+    volumes:
+      - ./data:/data
+</code></pre>
+<pre><code class="language-sh">docker compose up -d
+docker logs larenest      # shows the addresses and the certificate fingerprint
+</code></pre>
+<p>Then open <code>https://&lt;server-address&gt;:8080</code>. The browser warns once, because the certificate is your server's own (see <em>Encryption</em> below).</p>
+<ul>
+<li><strong>Without host networking</strong> (Docker Desktop on Mac or Windows, or if you prefer port mapping): use <code>ports: ["8080:8080"]</code> and set <code>LARENEST_ADDRESSES: "192.168.1.20,myserver.local"</code>, so QR codes and links point at the server instead of the container.</li>
+<li><strong>Commands:</strong><ul>
+<li><code>docker exec -it larenest node server.js add-user sam personal,shared</code></li>
+<li><code>docker exec -it larenest node server.js passwd alex</code></li>
+<li><code>docker exec larenest node server.js backup</code></li>
+</ul>
+</li>
+<li><strong>Data:</strong> everything is in the <code>./data</code> folder: <code>finance.db</code>, the daily <code>backups/</code>, settings and keys. Back that folder up.</li>
+<li><strong>Raspberry Pi:</strong> the image is multi-architecture, so the same compose file works on a Pi 4 or 5 running 64-bit Raspberry Pi OS.</li>
+<li><strong>Unraid, TrueNAS, Synology:</strong> create a container from <code>ghcr.io/nmllr93-git/larenest:latest</code>. Map <code>/data</code> to a share, use host networking (or map 8080 and set <code>LARENEST_ADDRESSES</code>), and add the first login variables.</li>
+</ul>
+<h2>Installer (systemd service)</h2>
+<pre><code class="language-sh">curl -fsSL https://larenest.app/install.sh | sudo bash
+# a different port:
+curl -fsSL https://larenest.app/install.sh | sudo bash -s -- --port 8443
+</code></pre>
+<p>What it does:</p>
+<ul>
+<li><strong>Node:</strong> uses Node 22.13+ if you already have it. Otherwise it downloads the official Node 22 build from nodejs.org into <code>/opt/larenest/node</code> and checks it against nodejs.org's published checksums.</li>
+<li><strong>App:</strong> downloads the latest Larenest server from GitHub into <code>/opt/larenest/app</code>.</li>
+<li><strong>Data:</strong> keeps it in <code>/var/lib/larenest</code>, owned by a <code>larenest</code> system user.</li>
+<li><strong>Service:</strong> adds a hardened systemd service, <code>larenest</code>, that starts on boot and restarts if it crashes.</li>
+<li><strong>Command:</strong> adds a <code>larenest</code> command: <code>larenest add-user &lt;name&gt; personal,shared</code>, <code>larenest passwd &lt;name&gt;</code>, <code>larenest users</code>, <code>larenest backup</code>.</li>
+<li><strong>First login:</strong> asks you to create one if you're at a terminal.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>To</th>
+<th>Run</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>See the logs</td>
+<td><code>journalctl -u larenest -f</code></td>
+</tr>
+<tr>
+<td>Update</td>
+<td>Run the installer again (your data isn't touched)</td>
+</tr>
+<tr>
+<td>Uninstall</td>
+<td><code>sudo bash /opt/larenest/app/scripts/install-linux.sh --uninstall</code> (data stays in <code>/var/lib/larenest</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Open port 8080 on the server's firewall if one is enabled, e.g. <code>sudo ufw allow 8080/tcp</code>.</p>
+<h2>Desktop app</h2>
+<ul>
+<li><strong>AppImage:</strong> works on almost any distribution. Download <code>Larenest-&lt;version&gt;-linux-x86_64.AppImage</code> (or <code>-arm64</code>) from <a href="/download/">larenest.app/download</a>, make it executable (<code>chmod +x</code>), and run it. It checks for updates itself.</li>
+<li><strong>.deb</strong> (Debian, Ubuntu, Mint, Pop!_OS): <code>sudo apt install ./Larenest-&lt;version&gt;-linux-amd64.deb</code>. Install new versions the same way.</li>
+</ul>
+<p>The desktop app works exactly as on Windows:</p>
+<ul>
+<li>the host window with Host options, QR codes for phones, and backups;</li>
+<li>a tray icon, if your desktop has one (GNOME needs the AppIndicator extension);</li>
+<li><strong>Start at login</strong>, through <code>~/.config/autostart</code>.</li>
+</ul>
+<p>Data is in <code>~/.local/share/household-finances</code>.</p>
+<hr />
+<h2>Which devices can connect?</h2>
+<p>All of them, whichever way you run the server:</p>
+<ul>
+<li><strong>Android:</strong> the Larenest app. Scan the QR code from ⚙ Settings → Connect a phone, then add home-screen widgets.</li>
+<li><strong>Windows and Mac:</strong> the Larenest desktop app in "connect to another computer" mode, or any web browser.</li>
+<li><strong>iPhone and iPad:</strong> Safari, until the iOS app is in the App Store. Open the server's address and use Share → Add to Home Screen for an app-like icon. Safari warns once about the server's own certificate. With Tailscale HTTPS (below) there's no warning.</li>
+<li><strong>Any other device:</strong> any modern web browser.</li>
+</ul>
+<h2>Encryption</h2>
+<p>The server makes its own HTTPS certificate on first start. The Larenest phone and desktop apps learn its fingerprint from the QR code and trust exactly that certificate, so connections from the apps are encrypted, even on plain home Wi-Fi. The fingerprint is printed in the log at startup.</p>
+<p>A browser opening an <code>https://</code> address shows a one-time warning, because no public authority vouches for the certificate. For a warning-free address, use Tailscale (free):</p>
+<ol>
+<li>Install Tailscale on the server and turn on <strong>HTTPS Certificates</strong> in the Tailscale admin console (DNS page).</li>
+<li>Let Larenest use it:<ul>
+<li><strong>Installer setup:</strong> run <code>sudo tailscale set --operator=larenest</code>, or add <code>TS_PERMIT_CERT_UID=larenest</code> to <code>/etc/default/tailscaled</code>, then restart Larenest. Larenest asks Tailscale for a certificate for the server's <code>*.ts.net</code> name and renews it automatically.</li>
+<li><strong>Docker:</strong> the container can't reach the host's Tailscale. Use <code>tailscale serve --bg --https=443 https+insecure://localhost:8080</code> on the host instead, which gives you a trusted <code>https://&lt;server&gt;.&lt;tailnet&gt;.ts.net</code> address.</li>
+</ul>
+</li>
+</ol>
+<p>Tailscale also lets your phone reach Larenest away from home, with nothing opened to the internet. <strong>Don't</strong> forward Larenest's port on your router.</p>
+<h2>Environment variables</h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DATA_DIR</code></td>
+<td><code>/data</code> (Docker), <code>/var/lib/larenest</code> (installer)</td>
+<td>Database, backups, settings</td>
+</tr>
+<tr>
+<td><code>PORT</code></td>
+<td><code>8080</code></td>
+<td>The one port for both HTTPS and HTTP</td>
+</tr>
+<tr>
+<td><code>HOST</code></td>
+<td><code>0.0.0.0</code></td>
+<td>Interface to listen on</td>
+</tr>
+<tr>
+<td><code>LARENEST_ADDRESSES</code></td>
+<td>(detected)</td>
+<td>Comma-separated addresses other devices use to reach the server (needed for Docker bridge networking)</td>
+</tr>
+<tr>
+<td><code>LARENEST_ADMIN_USER</code> / <code>LARENEST_ADMIN_PASSWORD</code></td>
+<td>–</td>
+<td>Create the first login when there are none</td>
+</tr>
+<tr>
+<td><code>TZ</code></td>
+<td>system</td>
+<td>Time zone for bill dates and budgets</td>
+</tr>
+</tbody>
+</table>
+<p>Market and economy data keys (optional) are added in ⚙ Settings → Data sources, or in <code>$DATA_DIR/api-keys.json</code>.</p>
+<p style="margin-top:2.5em">Questions: <a href="mailto:contact@larenest.app">contact@larenest.app</a> · <a href="/privacy/">Privacy policy</a> · <a href="/testers/">Tester guide</a></p>
+</main></body></html>
