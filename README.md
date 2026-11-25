@@ -3,7 +3,7 @@
 **Your whole financial picture — budgets, bills, net worth, investments and planning — on your own devices.**
 No account with us, no ads, no selling your data. Your numbers stay on your phone, your computer or your own home server.
 
-[**⬇ Download**](https://github.com/nmllr93-git/household_finances-releases/releases) · [Privacy Policy](PRIVACY.md) · Windows · Mac · Android · (iPhone coming)
+[**⬇ Download**](https://github.com/nmllr93-git/household_finances-releases/releases) · [Privacy Policy](PRIVACY.md) · Windows · Mac · Android · [iPhone beta (TestFlight)](https://testflight.apple.com/join/T2K2rVsw)
 
 ---
 
@@ -53,7 +53,7 @@ Most budgeting apps want your bank password and keep a copy of every transaction
 
 | Setup | Best for | What you need |
 |---|---|---|
-| **Phone only** | One person, no computer involved | The Android app (iPhone coming). Data stays on the phone. |
+| **Phone only** | One person, no computer involved | The Android app, or the iPhone app ([TestFlight beta](https://testflight.apple.com/join/T2K2rVsw)). Data stays on the phone. |
 | **This computer only** | One person on one Windows PC or Mac | The desktop app. |
 | **Home host** | A household: everyone uses it from their own phone and computer | The desktop app on an always-on PC or Mac, set to *Allow other devices*. Phones connect with the Android app or any browser. |
 
