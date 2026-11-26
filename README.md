@@ -20,15 +20,17 @@ Most budgeting apps want your bank password and keep a copy of every transaction
 ## Features
 
 ### Everyday money
+- **Switching apps?** Import your history straight from a Mint, Monarch, YNAB or Empower export: every account at once, with categories, tags and notes.
 - **Import statements:** CSV, OFX/QFX and **PDF statements** from banks, credit cards, mortgages and brokerages. Duplicate checks, transfer matching between your own accounts, and an editable transaction list.
 - **Automatic bank sync (optional):** connect banks through [SimpleFIN Bridge](https://beta-bridge.simplefin.org), a separate read-only service you subscribe to yourself (about $15/year). Your bank logins go to SimpleFIN, never to this app.
-- **Rules & categories:** auto-categorize vendors, rename messy descriptions, split one-time purchases from everyday spending.
+- **Rules & categories:** auto-categorize vendors, rename messy descriptions, split one-time purchases from everyday spending. Select several transactions to recategorize, tag or hide them at once.
 - **Budgets with pace:** monthly budgets per category with rollover, a budget ring showing *today* and *pace* markers, and mortgage payments counted correctly.
 - **Bills & subscriptions:** recurring charges detected automatically, price-increase alerts, "not recurring" marker for things like Venmo, and bill reminders on your phone.
 - **Receipts:** attach a photo of a receipt to any transaction.
 
 ### Net worth & investments
 - **Accounts & net worth:** checking, savings, cards, loans, mortgage, home and vehicle values, with history.
+- **Investment returns:** each account's gain for the period with deposits and withdrawals taken out, including paycheck 401(k) contributions.
 - **Holdings:** lots, buys and sells, gains, allocation rings, dividends and a dividend calendar; import positions from a broker CSV.
 - **Markets:** indexes, sectors, commodities, top movers in the sectors you follow, a watchlist, per-holding news, earnings dates, 52-week range and analyst views, plus a stock screener (free API keys from Finnhub / Financial Modeling Prep).
 - **Economy panel:** mortgage and savings rates, inflation (including Midwest category inflation), gas and electricity prices, Treasury and I-bond rates, exchange rates and an economic calendar — with refinance and savings-yield alerts.
